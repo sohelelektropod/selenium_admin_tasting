@@ -1,11 +1,10 @@
 import time
 from selenium import webdriver
-from selenium.common import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 
-class AdminPanel():
+class AdminPanel:
 
     def __init__(self):
         self.driver = webdriver.Chrome()
@@ -65,9 +64,11 @@ class AdminPanel():
 
         users_groups = self.driver.find_element(By.XPATH, "//a[@title='customer service']")
         users_groups.click()
+        time.sleep(5)
 
         users_clear_all_filters = self.driver.find_element(By.XPATH, "//a[contains(text(),'✖ Clear all filters')]")
         users_clear_all_filters.click()
+        time.sleep(2)
 
         for page_number in range(1, 5):
             self.driver.find_element(By.XPATH, f'//p[1]//a[{page_number}]').click()
@@ -78,27 +79,31 @@ class AdminPanel():
         self.driver.find_element(By.XPATH, "//input[@id='searchbar']").send_keys("sohel")
         users_search = self.driver.find_element(By.XPATH, "//input[@value='Search']")
         users_search.click()
+        time.sleep(2)
 
         users_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='mullasohelvajir@gmail.com']")
         users_view.click()
+        time.sleep(2)
 
         users_history = self.driver.find_element(By.XPATH, "//a[@class='historylink']")
         users_history.click()
+        time.sleep(2)
 
         users_back = self.driver.find_element(By.XPATH, "//div[@class='breadcrumbs']//a[normalize-space()='Users']")
         users_back.click()
 
         users_add = self.driver.find_element(By.XPATH, "//a[normalize-space()='Add user']")
         users_add.click()
+        time.sleep(2)
 
         users_add_from_sidebar = self.driver.find_element(By.XPATH, "//a[@href='/admin/custms/user/add/']")
         users_add_from_sidebar.click()
+        time.sleep(2)
 
         users_home = self.driver.find_element(By.XPATH, "//div[@class='breadcrumbs']//a[normalize-space()='Users']")
         users_home.click()
 
-        time.sleep(4)
-        self.driver.maximize_window()
+        time.sleep(10)
 
     def ticket_XPATH(self):
 
@@ -120,21 +125,26 @@ class AdminPanel():
 
         ticket_other = self.driver.find_element(By.XPATH, "//a[@title='Other issues']")
         ticket_other.click()
+        time.sleep(2)
 
         ticket_clear_all_filter = self.driver.find_element(By.XPATH, "//a[contains(text(),'✖ Clear all filters')]")
         ticket_clear_all_filter.click()
+        time.sleep(2)
 
         for page_number in range(1, 8):
             self.driver.find_element(By.XPATH, f'//p[1]//a[{page_number}]').click()
 
         ticket_show_all = self.driver.find_element(By.XPATH, "//p[1]//a[9]")
         ticket_show_all.click()
+        time.sleep(2)
 
         ticket_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='hjghjghj']")
         ticket_view.click()
+        time.sleep(2)
 
         ticket_history = self.driver.find_element(By.XPATH, "//a[@class='historylink']")
         ticket_history.click()
+        time.sleep(2)
 
         ticket_back = self.driver.find_element(By.XPATH, "//div[@class='breadcrumbs']//a[normalize-space()='Tickets']")
         ticket_back.click()
@@ -144,11 +154,12 @@ class AdminPanel():
 
         ticket_add_from_sidebar = self.driver.find_element(By.XPATH, "//a[@href='/admin/custms/ticket/add/']")
         ticket_add_from_sidebar.click()
+        time.sleep(2)
 
         ticket_home = self.driver.find_element(By.XPATH, "//div[@class='breadcrumbs']//a[normalize-space()='Tickets']")
         ticket_home.click()
 
-        time.sleep(5)
+        time.sleep(10)
 
     def txnms_XPATH(self):
 
@@ -163,6 +174,7 @@ class AdminPanel():
 
         txn_no = self.driver.find_element(By.XPATH, "//a[@title='No']")
         txn_no.click()
+        time.sleep(2)
 
         site_names = [
             'All', 'Eastwood Layout', 'Surat-Amroli', 'Surat-Nitech',
@@ -175,6 +187,7 @@ class AdminPanel():
                                                 "//ul[@class='admin-filter-CSSite']//select[@class='form-control']")
             select = Select(dropdown)
             select.select_by_visible_text(site_name)
+        time.sleep(2)
 
         charger_names = [
             "TestCharger1", "TestCharger2", "TestCharger3",
@@ -198,30 +211,33 @@ class AdminPanel():
                                                 "//ul[@class='admin-filter-chargingstation']//select[@class='form-control']")
             select = Select(dropdown)
             select.select_by_visible_text(charger_name)
+        time.sleep(2)
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='Any date']")
-        txn_no.click()
+        txn_anydate = self.driver.find_element(By.XPATH, "//a[@title='Any date']")
+        txn_anydate.click()
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='Today']")
-        txn_no.click()
+        txn_today = self.driver.find_element(By.XPATH, "//a[@title='Today']")
+        txn_today.click()
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='Past 7 days']")
-        txn_no.click()
+        txn_past = self.driver.find_element(By.XPATH, "//a[@title='Past 7 days']")
+        txn_past.click()
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='This month']")
-        txn_no.click()
+        txn_month = self.driver.find_element(By.XPATH, "//a[@title='This month']")
+        txn_month.click()
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='This year']")
-        txn_no.click()
+        txn_year = self.driver.find_element(By.XPATH, "//a[@title='This year']")
+        txn_year.click()
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='No date']")
-        txn_no.click()
+        txn_no_date = self.driver.find_element(By.XPATH, "//a[@title='No date']")
+        txn_no_date.click()
 
-        txn_no = self.driver.find_element(By.XPATH, "//a[@title='Has date']")
-        txn_no.click()
+        txn_has_date = self.driver.find_element(By.XPATH, "//a[@title='Has date']")
+        txn_has_date.click()
+        time.sleep(2)
 
         txn_clear_all_filters = self.driver.find_element(By.XPATH, "//a[contains(text(),'✖ Clear all filters')]")
         txn_clear_all_filters.click()
+        time.sleep(2)
 
         for page_number in range(1, 9):
             self.driver.find_element(By.XPATH, f'//p[1]//a[{page_number}]').click()
@@ -229,12 +245,15 @@ class AdminPanel():
         self.driver.find_element(By.XPATH, "//input[@id='searchbar']").send_keys("sohel")
         txn_search = self.driver.find_element(By.XPATH, "//input[@value='Search']")
         txn_search.click()
+        time.sleep(2)
 
         txn_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='e6fe656d-8905-2bd6-62be-4dc1af359394']")
         txn_view.click()
+        time.sleep(2)
 
         txn_history = self.driver.find_element(By.XPATH, "//a[@class='historylink']")
         txn_history.click()
+        time.sleep(2)
 
         txn_back = self.driver.find_element(By.XPATH,
                                             "//div[@class='breadcrumbs']//a[normalize-space()='Transactions']")
@@ -242,6 +261,7 @@ class AdminPanel():
 
         txn_report = self.driver.find_element(By.XPATH, "//a[@class='reportlink']")
         txn_report.click()
+        time.sleep(2)
 
         self.driver.find_element(By.XPATH, "//input[@id='id_start_date']").send_keys("01/12/2022")
 
@@ -262,7 +282,7 @@ class AdminPanel():
         txn_sidebar_home = self.driver.find_element(By.XPATH, "//a[normalize-space()='Transactions']")
         txn_sidebar_home.click()
 
-        time.sleep(4)
+        time.sleep(10)
 
     def wallet_history_XPATH(self):
 
@@ -306,8 +326,7 @@ class AdminPanel():
         wallet_search.click()
         time.sleep(2)
 
-        wallet_view = self.driver.find_element(By.XPATH,
-                                               "/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/table[1]/tbody[1]/tr[1]/th[1]/a[1]")
+        wallet_view = self.driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/table[1]/tbody[1]/tr[1]/th[1]/a[1]")
         wallet_view.click()
         time.sleep(2)
 
@@ -332,9 +351,11 @@ class AdminPanel():
         wallet_back = self.driver.find_element(By.XPATH,
                                                "//div[@class='breadcrumbs']//a[normalize-space()='Wallet Historys']")
         wallet_back.click()
-        time.sleep(2)
+        time.sleep(10)
 
     def cs_model_XPATH(self):
+
+        self.login()
 
         cs_model_link = self.driver.find_element(By.CSS_SELECTOR, "a[href='/admin/csms/csmodel/']")
         cs_model_link.click()
@@ -363,27 +384,34 @@ class AdminPanel():
 
         # ------Add cs_model form test---------
 
-        # self.driver.find_element(By.XPATH, "//input[@id='id_name']").send_keys("2W-1")
-        # time.sleep(2)
-        #
-        # self.driver.find_element(By.XPATH, "//input[@id='id_evse_count']").send_keys("2")
-        # time.sleep(2)
-        #
-        # connector_type = self.driver.find_element(By.XPATH, "//select[@id='id_connector_type']")
-        # select = Select(connector_type)
-        # select.select_by_visible_text("3-pin Plug")
-        # time.sleep(2)
-        #
-        # self.driver.find_element(By.XPATH, "//input[@id='id_max_output']").send_keys("4")
-        # time.sleep(2)
-        #
-        # save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
-        # save.click()
+        self.driver.find_element(By.XPATH, "//input[@id='id_name']").send_keys("2W-2")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_evse_count']").clear()
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_evse_count']").send_keys("2")
+        time.sleep(2)
+
+        connector_type = self.driver.find_element(By.XPATH, "//select[@id='id_connector_type']")
+        select = Select(connector_type)
+        select.select_by_visible_text("3-pin Plug")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_max_output']").clear()
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_max_output']").send_keys("4")
+        time.sleep(2)
+
+        save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
+        save.click()
+        time.sleep(10)
 
     def sites_XPATH(self):
 
-        siteslink = self.driver.find_element(By.CSS_SELECTOR, "a[href='/admin/csms/site/']")
-        siteslink.click()
+        sites_link = self.driver.find_element(By.CSS_SELECTOR, "a[href='/admin/csms/site/']")
+        sites_link.click()
         time.sleep(2)
 
         sites_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='Shraddha Motors -TATA Motors']")
@@ -409,30 +437,231 @@ class AdminPanel():
 
         # ------Add site form test---------
 
-        # self.driver.find_element(By.XPATH, "//input[@id='id_name']").send_keys("testing_site_selenium")
-        # time.sleep(2)
-        #
-        # self.driver.find_element(By.XPATH, "//input[@id='id_evse_count']").send_keys("2")
-        # time.sleep(2)
-        #
-        # site_status_dropdown = self.driver.find_element(By.XPATH, "//select[@id='id_site_status']")
-        # select = Select(site_status_dropdown)
-        # select.select_by_visible_text("Upcoming")
-        # time.sleep(2)
-        #
-        # self.driver.find_element(By.XPATH, "//input[@id='id_site_contact']").send_keys("9420053193")
-        # time.sleep(2)
-        #
-        # self.driver.find_element(By.XPATH, "//input[@id='id_site_address']").send_keys("Bengaluru")
-        # time.sleep(2)
-        #
-        # state_dropdown = self.driver.find_element(By.XPATH, "//select[@id='id_site_state']")
-        # select = Select(state_dropdown)
-        # select.select_by_visible_text("Karnataka")
-        # time.sleep(2)
-        #
-        # save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
-        # save.click()
+        self.driver.find_element(By.XPATH, "//input[@id='id_name']").send_keys("testing_site_selenium_1")
+        time.sleep(2)
+
+        site_status_dropdown = self.driver.find_element(By.XPATH, "//select[@id='id_site_status']")
+        select = Select(site_status_dropdown)
+        select.select_by_visible_text("Upcoming")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_site_contact']").send_keys("9420053194")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_site_address']").send_keys("Bengaluru")
+        time.sleep(2)
+
+        state_dropdown = self.driver.find_element(By.XPATH, "//select[@id='id_site_state']")
+        select = Select(state_dropdown)
+        select.select_by_visible_text("Karnataka")
+        time.sleep(2)
+
+        use_invoice_name_checkbox = self.driver.find_element(By.XPATH, "//input[@id='id_is_owner']")
+        use_invoice_name_checkbox.click()
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_invoice_name']").send_keys("sohel mulla one")
+        self.driver.find_element(By.XPATH, "//input[@id='id_account_name']").send_keys("sohel mulla one")
+        self.driver.find_element(By.XPATH, "//input[@id='id_account_number']").send_keys("1234567891")
+        self.driver.find_element(By.XPATH, "//input[@id='id_bank_ifsc']").send_keys("ICICI0000594")
+
+        time.sleep(4)
+
+        save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
+        save.click()
+        time.sleep(10)
+
+    def csms_XPATH(self):
+
+        csms_link = self.driver.find_element(By.CSS_SELECTOR, "a[href='/admin/csms/chargingstation/']")
+        csms_link.click()
+
+        site_names = [
+            'All', 'Eastwood Layout', 'Surat-Amroli', 'Surat-Nitech',
+            'BHive-HSR Layout', 'Vega City-BLR', 'Padmavati Foundry',
+            'MANGALAM INTERMEDIATES UNIT 2', 'Eastwood_2CDemo', 'Shraddha Motors -TATA Motors'
+        ]
+
+        for site_name in site_names:
+            csms_cs_site_filter = self.driver.find_element(By.XPATH, "//select[@class='form-control']")
+            select = Select(csms_cs_site_filter)
+            select.select_by_visible_text(site_name)
+
+        csms_clear_all_filter = self.driver.find_element(By.XPATH, "//a[contains(text(),'✖ Clear all filters')]")
+        csms_clear_all_filter.click()
+        time.sleep(2)
+
+        for page_number in range(1,3):
+            csms_pagination = self.driver.find_element(By.XPATH, f"//p[1]//a[{page_number}]")
+            csms_pagination.click()
+
+        self.driver.find_element(By.XPATH, "//input[@id='searchbar']").send_keys("Sahil")
+        csms_search = self.driver.find_element(By.XPATH, "//input[@value='Search']")
+        csms_search.click()
+        time.sleep(2)
+
+        csms_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='Sahil']")
+        csms_view.click()
+        time.sleep(2)
+
+        csms_history = self.driver.find_element(By.XPATH, "//a[@class='historylink']")
+        csms_history.click()
+        time.sleep(2)
+
+        csms_back_history = self.driver.find_element(By.XPATH, "//a[normalize-space()='Sahil']")
+        csms_back_history.click()
+        time.sleep(2)
+
+        csms_manage_confg = self.driver.find_element(By.XPATH, "//a[@class='configlink']")
+        csms_manage_confg.click()
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_PlatformCtrlr: Name']").send_keys("TestCharger2")
+
+        csms_manage_confg_submit = self.driver.find_element(By.XPATH, "//input[@value='Submit']")
+        csms_manage_confg_submit.click()
+
+        csms_home = self.driver.find_element(By.XPATH, "//a[normalize-space()='Charging Stations']")
+        csms_home.click()
+
+        csms_add_from_sidebar = self.driver.find_element(By.XPATH, "//a[@href='/admin/csms/chargingstation/add/']")
+        csms_add_from_sidebar.click()
+        time.sleep(2)
+
+        csms_home = self.driver.find_element(By.XPATH, "//a[normalize-space()='Charging Stations']")
+        csms_home.click()
+        time.sleep(2)
+
+        csms_add = self.driver.find_element(By.XPATH, "//a[normalize-space()='Add Charging Station']")
+        csms_add.click()
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_device_id']").send_keys("12345675")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_product_id']").send_keys("test_selenium_5")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_name']").send_keys("test_selenium_cs_5")
+        time.sleep(2)
+
+        csms_select_cs_model = self.driver.find_element(By.XPATH, "//select[@id='id_cs_model']")
+        select = Select(csms_select_cs_model)
+        select.select_by_visible_text("2ww")
+        time.sleep(2)
+
+        csms_select_firmware_version = self.driver.find_element(By.XPATH, "//select[@id='id_firmware_version']")
+        select = Select(csms_select_firmware_version)
+        select.select_by_visible_text("2.0.32")
+        time.sleep(2)
+
+        csms_select_site = self.driver.find_element(By.XPATH, "//select[@id='id_cs_site']")
+        select = Select(csms_select_site)
+        select.select_by_visible_text("testing_site_selenium")
+        time.sleep(2)
+
+        self.driver.find_element(By.XPATH, "//textarea[@id='id_location']").send_keys('{"type":"Point","coordinates":[76.924338,18.052479]}')
+
+        csms_save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
+        csms_save.click()
+        time.sleep(5)
+
+        csms_force_update = self.driver.find_element(By.XPATH, "//a[@class='configlink']")
+        csms_force_update.click()
+
+        csms_force_update_site = self.driver.find_element(By.XPATH, "//select[@id='id_site']")
+        select = Select(csms_force_update_site)
+        select.select_by_visible_text("testing_site_selenium")
+
+        csms_force_update_cs = self.driver.find_element(By.XPATH, "//option[normalize-space()='testing_selenium_cs']")
+        csms_force_update_cs.click()
+
+        csms_force_update_submit = self.driver.find_element(By.XPATH, "//input[@value='Submit']")
+        csms_force_update_submit.click()
+        time.sleep(4)
+
+        csms_home = self.driver.find_element(By.XPATH, "//a[normalize-space()='Home']")
+        csms_home.click()
+
+        csms_home = self.driver.find_element(By.XPATH, "//a[normalize-space()='Charging Stations']")
+        csms_home.click()
+        time.sleep(10)
+
+    def firmware_version_XPATH(self):
+
+        fv_link = self.driver.find_element(By.CSS_SELECTOR, "tr[class='model-firmwareversion'] th[scope='row'] a")
+        fv_link.click()
+
+        fv_add = self.driver.find_element(By.XPATH, "//a[normalize-space()='Add Firmware Version']")
+        fv_add.click()
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_version_name']").send_keys("selenium_test_2.0")
+
+        fv_add_cs_model_select = self.driver.find_element(By.XPATH, "//select[@id='id_cs_model']")
+        select = Select(fv_add_cs_model_select)
+        select.select_by_visible_text("2ww")
+
+        fv_remove_null = self.driver.find_element(By.XPATH, "//textarea[@id='id_config']")
+        fv_remove_null.clear()
+        time.sleep(8)
+
+        self.driver.find_element(By.XPATH, "//textarea[@id='id_config']").send_keys('[{"variable": {"name": "ModelNumber"}, "component": {"name": "PlatformCtrlr"}, "attributeValue": "60KW CCS2", "attributeVarType": "CONFIG_RO", "attributeValueType": "stringType", "attributeFactoryDefValue": "60KW CCS2"}, {"variable": {"name": "FirmwareVersion"}, "component": {"name": "PlatformCtrlr"}, "attributeValue": "3.2.19-2.1.6", "attributeVarType": "CONFIG_RO", "attributeValueType": "stringType", "attributeFactoryDefValue": "3.2.19-2.1.6"}, {"variable": {"name": "Name"}, "component": {"name": "PlatformCtrlr"}, "attributeValue": "TestCharger3", "attributeVarType": "CONFIG_RW", "attributeValueType": "stringType", "attributeFactoryDefValue": "Undefined"}, {"variable": {"name": "Available"}, "component": {"evse": {"id": "1"}, "name": "ChargingStation"}, "attributeValue": "1", "attributeVarType": "CONFIG_RO", "attributeValueType": "boolType", "attributeFactoryDefValue": "1"}, {"variable": {"name": "Available"}, "component": {"evse": {"id": "2"}, "name": "ChargingStation"}, "attributeValue": "1", "attributeVarType": "CONFIG_RO", "attributeValueType": "boolType", "attributeFactoryDefValue": "1"}, {"variable": {"name": "Available"}, "component": {"evse": {"id": "0"}, "name": "ChargingStation"}, "attributeValue": "1", "attributeVarType": "CONFIG_RO", "attributeValueType": "boolType", "attributeFactoryDefValue": "1"}, {"variable": {"name": "AvailabilityState"}, "component": {"name": "ChargingStation"}, "attributeValue": "", "attributeVarType": "STATE_V", "attributeValueType": "stringType", "attributeFactoryDefValue": "Undefined"}, {"variable": {"name": "AvailabilityState"}, "component": {"evse": {"id": "1"}, "name": "ChargingStation"}, "attributeValue": "", "attributeVarType": "STATE_V", "attributeValueType": "stringType", "attributeFactoryDefValue": "Undefined"}, {"variable": {"name": "AvailabilityState"}, "component": {"evse": {"id": "2"}, "name": "ChargingStation"}, "attributeValue": "", "attributeVarType": "STATE_V", "attributeValueType": "stringType", "attributeFactoryDefValue": "Undefined"}, {"variable": {"name": "AvailabilityState"}, "component": {"evse": {"id": "0"}, "name": "ChargingStation"}, "attributeValue": "1", "attributeVarType": "STATE_V", "attributeValueType": "stringType", "attributeFactoryDefValue": "Undefined"}]')
+
+        fv_save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
+        fv_save.click()
+        time.sleep(4)
+
+        fv_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='selenium_test_1.0']")
+        fv_view.click()
+
+        fv_history = self.driver.find_element(By.XPATH, "//a[@class='historylink']")
+        fv_history.click()
+
+        fv_home = self.driver.find_element(By.XPATH, "//div[@class='breadcrumbs']//a[normalize-space()='Firmware Versions']")
+        fv_home.click()
+        time.sleep(10)
+
+    def groups_XPATH(self):
+
+        groups_link = self.driver.find_element(By.CSS_SELECTOR, "a[href='/admin/auth/group/']")
+        groups_link.click()
+
+        groups_add = self.driver.find_element(By.XPATH,"//a[normalize-space()='Add group']")
+        groups_add.click()
+
+        self.driver.find_element(By.XPATH, "//input[@id='id_name']").send_keys("testing service")
+
+        groups_add_permission = self.driver.find_element(By.XPATH, "//option[@title='admin | log entry | Can view log entry']")
+        groups_add_permission.click()
+
+        groups_add_choice = self.driver.find_element(By.XPATH, "//a[@id='id_permissions_add_link']")
+        groups_add_choice.click()
+
+        groups_add_permission = self.driver.find_element(By.XPATH, "//option[@title='auth | group | Can view group']")
+        groups_add_permission.click()
+
+        groups_add_choice = self.driver.find_element(By.XPATH, "//a[@id='id_permissions_add_link']")
+        groups_add_choice.click()
+        time.sleep(4)
+
+        groups_save = self.driver.find_element(By.XPATH, "//input[@name='_save']")
+        groups_save.click()
+
+        self.driver.find_element(By.XPATH, "//input[@id='searchbar']").send_keys("testing")
+        groups_search = self.driver.find_element(By.XPATH, "//input[@value='Search']")
+        groups_search.click()
+        time.sleep(4)
+
+        groups_view = self.driver.find_element(By.XPATH, "//a[normalize-space()='testing service']")
+        groups_view.click()
+        time.sleep(5)
+
+        groups_history = self.driver.find_element(By.XPATH, "//a[@class='historylink']")
+        groups_history.click()
+        time.sleep(5)
+
+        groups_home= self.driver.find_element(By.XPATH, "//div[@class='breadcrumbs']//a[normalize-space()='Groups']")
+        groups_home.click()
+        time.sleep(10)
 
 
 admin = AdminPanel()
@@ -442,3 +671,7 @@ admin.txnms_XPATH()
 admin.wallet_history_XPATH()
 admin.cs_model_XPATH()
 admin.sites_XPATH()
+admin.csms_XPATH()
+admin.firmware_version_XPATH()
+admin.groups_XPATH()
+
